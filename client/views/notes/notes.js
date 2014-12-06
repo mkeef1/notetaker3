@@ -9,7 +9,6 @@
     function getRecent(){
       Note.recent().then(function(response){
         $scope.notes = response.data.notes;
-        console.log($scope.notes);
       });
     }
 
@@ -23,7 +22,7 @@
     };
 
     $scope.show = function(note){
-      Note.showOne($scope.note).then(function(response){
+      Note.showOne(note).then(function(response){
       debugger;
         $scope.note = response.data;
       });

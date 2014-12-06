@@ -19,10 +19,10 @@ Note.query = function(user, query, cb){
   });
 };
 
-Note.showOne = function(noteId, obj, cb){
-  pg.query('select * from notes', [], function(err, note){
-    console.log('server note', note);
-    cb(err, note);
+Note.showOne = function(noteId, note, cb){
+  pg.query('select * from notes where notes.id = ' + noteId, [note.id], function(err, results){
+    console.log('server note', results);
+    cb(err, results && results.rows ? results.rows : null);
   });
 };
 

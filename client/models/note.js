@@ -14,7 +14,7 @@
 
     function showOne(note){
       console.log('client model note', note);
-      return $http.get('/notes/' + note.id);
+      return $http.get('/notes/' + {note:note});
     }
 
     return {create:create, recent:recent, showOne:showOne};
