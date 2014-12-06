@@ -19,4 +19,11 @@ Note.query = function(user, query, cb){
   });
 };
 
+Note.showOne = function(noteId, obj, cb){
+  pg.query('select * from notes', [], function(err, note){
+    console.log('server note', note);
+    cb(err, note);
+  });
+};
+
 module.exports = Note;

@@ -12,6 +12,11 @@
       return $http.get('/notes?limit=10&offset=0');
     }
 
-    return {create:create, recent:recent};
+    function showOne(note){
+      console.log('client model note', note);
+      return $http.get('/notes/' + note.id);
+    }
+
+    return {create:create, recent:recent, showOne:showOne};
   }]);
 })();

@@ -6,11 +6,13 @@ h1 NOTES
     table#notes
       thead
         tr
+          th
           th Title
           th Tags
       tbody
         tr(ng-repeat='note in notes')
-          td {{note.title}}
+          td: button(ng-click='show(note)')
+          td: a(href='/#/notes/{{note.id}}') {{note.title}}
           td
             span.tag(ng-repeat='name in note.tag_names')
               a(href='/notes?tag={{name}}') {{name}}
@@ -20,3 +22,4 @@ h1 NOTES
     textarea(ng-model='note.body')
     input(type='text', ng-model='note.tags', placeholder='tag1,tag2,tag3')
     button.radius.success(ng-click='create(note)') Create
+
