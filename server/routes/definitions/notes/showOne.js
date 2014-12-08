@@ -8,7 +8,7 @@ module.exports = {
     mode: 'try'
   },
     handler: function(req, rep){
-      Note.showOne(req.params.noteId, req.payload, function(err, note){
+      Note.showOne(req.params.noteId, function(err, note){
         console.log('controllernote', note);
         rep(note.rows).code(note ? 200 : 400);
       });
