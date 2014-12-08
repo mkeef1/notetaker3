@@ -24,16 +24,18 @@
       });
     };
 
+    $scope.show = function(noteId){
     Note.showOne($stateParams.noteId).then(function(response){
       debugger;
       $scope.note = response.data[0];
       $rootScope.currentState = $scope.note.notetitle;
         $scope.note = response.data;
       });
-
-    $scope.show = function(noteId){
-      $state.go('showOne', {noteId: noteId});
     };
+
+//    $scope.show = function(noteId){
+  //    $state.go('showOne', {noteId: noteId});
+    //};
 
   }]);
 })();

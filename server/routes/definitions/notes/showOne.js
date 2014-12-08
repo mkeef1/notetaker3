@@ -10,7 +10,8 @@ module.exports = {
     handler: function(req, rep){
       Note.showOne(req.params.noteId, function(err, note){
         console.log('controllernote', note);
-        rep(note.rows).code(note ? 200 : 400);
+        console.log('controllernoteparam', req.params.noteId);
+        rep(note).code(note ? 200 : 400);
       });
     }
 };
