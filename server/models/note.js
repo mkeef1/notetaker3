@@ -6,7 +6,7 @@ var pg = require('../postgres/manager'),
     crypto = require('crypto'),
     bucket = process.env.AWS_BUCKET,
     AWS    = require('aws-sdk'),
-    s3     = new AWS.s3(),
+    s3     = new AWS.S3(),
     async  = require('async'),
     fs     = require('fs');
 
@@ -30,11 +30,8 @@ Note.query = function(user, query, cb){
   });
 };
 
-Note.showOne = function(noteId, note, cb){
-  pg.query('select * from get_notes($1)', [note.id], function(err, results){
-    console.log('server note', results);
-    cb(err, results && results.rows ? results.rows : null);
-  });
+Note.showOne = function(noteId, cb){
+  pg.query('select * from get_note($1)', [noteId], cb);
 };
 
 module.exports = Note;

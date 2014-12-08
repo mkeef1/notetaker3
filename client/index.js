@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  angular.module('hapi-auth', ['ui.router'])
+  angular.module('hapi-auth', ['ui.router', 'angularFileUpload'])
     .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
       $urlRouterProvider.otherwise('/');
 
@@ -10,7 +10,7 @@
         .state('register', {url:'/register',   templateUrl:'/views/users/users.html',   controller:'UsersCtrl'})
         .state('login',    {url:'/login',      templateUrl:'/views/users/users.html',   controller:'UsersCtrl'})
         .state('notes',    {url:'/notes',      templateUrl:'/views/notes/notes.html',   controller:'NotesCtrl'})
-        .state('showOne',    {url:'/notes/',      templateUrl:'/views/notes/oneNote.html',   controller:'NotesCtrl'});
+        .state('showOne',    {url:'/notes/:noteId',      templateUrl:'/views/notes/oneNote.html',   controller:'NotesCtrl'});
       }])
     .run(['$rootScope', '$http', function($rootScope, $http){
       $http.get('/status').then(function(response){

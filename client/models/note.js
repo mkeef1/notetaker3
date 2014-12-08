@@ -12,9 +12,9 @@
       return $http.get('/notes?limit=10&offset=0');
     }
 
-    function showOne(note){
-      console.log('client model note', note);
-      return $http.get('/notes/' + {note:note});
+    function showOne(noteId){
+      console.log('client model note', noteId);
+      return $http.get('/notes/' + noteId);
     }
 
     return {create:create, recent:recent, showOne:showOne};
